@@ -77,6 +77,28 @@ with open('./resource/it_news.txt', 'r', encoding='UTF-8') as f :
     print(line)
     print('----------')
 
+"""
+123
+456
+789
+
+라는 내용의 파일이 있는 경우 아래와 같이 출력됨
+
+123
+
+456
+
+789
+
+- 이유 ?
+readline() 사용 시, 줄바꿈을 포함해서 반환하나
+print() 사용시에도 줄바꿈을 포함하여 반환되어 줄바꿈 공백이 발생됨
+아래와 같이 해결할 수 있음
+
+print(line.rstrip())
+print(line, end='')
+"""
+
 # ex 5) readlines : 전체를 읽은 후 라인 단위 리스트로 저장
 with open('./resource/it_news.txt', 'r', encoding='UTF-8') as f :
     cts = f.readlines()
@@ -87,19 +109,21 @@ with open('./resource/it_news.txt', 'r', encoding='UTF-8') as f :
     print('----------')
 
 # 1-2) 파일 쓰기
-# ex 1) write
+# ex 1) write() : 지정한 파일에 신규 내용 작성 (기존 파일에 신규로 덮어씌워짐)
 with open('./resource/contents1.txt', 'w') as f :
     f.write('I Love Python\n')
 
-# ex 2) append
+# ex 2) append() : 지정한 파일에 신규 내용 추가 (기존 파일에 작성한 내용이 추가됨 / 신규로 덮어씌워지지 않음)
 with open('./resource/contents1.txt', 'a') as f :
     f.write('I Love Python2\n')
 
-# ex 3) writelines : 리스트 -> 파일
+# ex 3) writelines() : 지정한 파일에 신규 내용 작성 (기존 파일에 신규로 덮어씌워짐)
+# # iterable 안의 요소들을 그대로 이어서 쓸 수 있음 (리스트 -> 파일)
 with open('./resource/contents2.txt', 'w') as f :
     list = ['Orage\n', 'Apple\n', 'banana\n', 'melon']
     f.writelines(list)
-
+    f.writelines(( "hello\n", "world\n" ))   # 튜플
+    f.writelines({"a\n", "b\n"})             # 집합 (순서 보장 X)
 # ex 4) print : file 옵션을 사용하면 콘솔에 출력되지 않고, 지정한 파일에 작성됨
 with open('./resource/contents3.txt', 'w') as f :
     print('Test Text Write', file = f)

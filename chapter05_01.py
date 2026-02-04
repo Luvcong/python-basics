@@ -61,8 +61,22 @@ print(type(d), d, d.get(''), d.items(), d.keys())
 print('----------')
 
 # 중요 **
-# *args (튜플 자료형에서 사용)
-# **kwarge (교집합 자료형에서 사용)
+"""
+*args (튜플 자료형에서 사용) - 위치 인자들을 튜플로 받음
+
+def func(*args) :
+    pass
+
+func(1, 2, 3)
+# args == (1, 2, 3)
+"""
+
+"""
+**kwargs (딕셔너리 자료형에서 사용) - 키워드 인자들을 딕셔너리로 받음
+
+func(a = 1, b = 2)
+# kwargs : {'a' : 1, 'b' : 2}
+"""
 
 # *args (unpacking)
 def args_func(*args) :
@@ -109,7 +123,7 @@ print('----------')
 # 메모리 절약, 가독성 향상, 코드 간결
 # 함수는 객체 생성 -> 리소스(메모리)할당
 # 람다는 즉시 실행 함수(Heap 초기화) -> 메모리 초기화
-# 람다식을 남발하는 경우 오히려 가독성이 감소
+# 람다식을 남발하는 경우 오히려 가독성이 감소하기 떄문에 적절한 사용 필요
 """
 def mul_func(x, y) :
     return x * y
@@ -142,16 +156,24 @@ def func_final(x, y, func):
 func_final(10, 20, lambda_mul_func)
 print('----------')
 
-# Hint 1)
+# 함수 Type Hint (= Type Annotaion)
+# 1)
 # word   : 매개변수가 문자열이어야 함
 # num    : 매개변수가 정수여야 함
 # -> int : 반환 값은 정수
 def tot_length1(word: str, num: int) -> int:
-    return len(word) * num
+    return len(word) * num 
 
 print('hint exam1 : ', tot_length1("i love you", 10))
 
-# Hint 2)
+def test_func(word: str, num: int) -> int :
+    print(word, num)
+
+test_func('test', 1)
+# 반환 값을 int로 설정하고, 실제 반환 값은 str이여도 오류는 나지 않음
+# 타입 힌트는 강제 규칙이 아니기 떄문 (파이썬 인터프리터에서 검사하지 않음)
+
+# 2)
 # -> None : 반환 값 없음
 def tot_length2(word: str, num: int) -> None:
     print('hint exam2 : ', len(word) * num)

@@ -24,7 +24,7 @@ for i, name in enumerate(['abc', 'bcd', 'efg']) :
     print(i, name)
 print('----------')
 
-# 1-5) filter : 반복 가능한 객체 요소를 지정한 하뭇 조건에 맞는 값 추출
+# 1-5) filter : 반복 가능한 객체 요소를 지정한 함수 조건에 맞는 값 추출
 def  conv_pos(x) :
     return abs(x) > 2
 
@@ -56,9 +56,13 @@ def conv_abs(x) :
     return abs(x)
 
 print(list(map(conv_abs, [1, -3, 2, 0, -5, 9])))
+
 # 람다 활용 시,
 print(list(map(lambda x : abs(x), [1, -3, 2, 0, -5, 9])))
 print('----------')
+
+# 리스트 컴프리핸션 활용 시,
+# [abs(x) for x in [1, -3, 2, 5]]
 
 # 1-10) pow : 제곱값 반환
 print(pow(2, 10))
@@ -94,5 +98,5 @@ print(type([]))
 # 1-16) zip : 반복 가능한 객체(Iterable)의 요소를 묶어서 튜플 형태로 반환
 print(list(zip([10,20,30],[40,50,777])))            # [(10, 40), (20, 50), (30, 777)]
 # 40은 반환되지 않음 / 요소를 묶을때 짝이 맞는 것만 반환
-print(list(zip([10,20,30, 40],[40,50,777])))        # [(10, 40), (20, 50), (30, 777)]
+print(list(zip([10,20,30,40],[40,50,777])))        # [(10, 40), (20, 50), (30, 777)]
 print(type(list(zip([10,20,30],[40,50,777]))[0]))   # <class 'tuple'>

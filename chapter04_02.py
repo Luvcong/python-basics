@@ -5,7 +5,7 @@ for i in <collection>
     <loop body>
 """
 
-# range : 0부터 시작
+# range : 0부터 시작~ -1까지
 for v1 in range(10) :
     print('v1 is. : ', v1)  # 0 ~ 9까지 출력
 

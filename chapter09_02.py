@@ -42,10 +42,11 @@ with open('./resource/test1.csv', 'r') as f :
     for c in reader :
         for k, v in c.items() :
             print(k, v)
-        print('----------')
+        print('----------테스트')
 
 # ex 4)
 # 하나의 리스트가 하나의 레코드로 인식됨
+# 1) writerow() : iterable 객체를 한 줄씩 반환하여 기록
 w = [[1, 2, 3], [4, 5, 6], [7, 8, 9], [10, 11, 12], [13, 14, 15], [16, 17, 18], [19, 20, 21]]
 with open('./resource/write1.csv', 'w', encoding='utf-8') as f :
     print(dir(csv))
@@ -58,15 +59,23 @@ with open('./resource/write1.csv', 'w', encoding='utf-8') as f :
     for v in w :
         wt.writerow(v)
 
+# 2) writerows() : iterable 객체(리스트, 튜플)를 여러 행 한 번에 반환하여 기록
+w = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
+with open('csv_test.csv', 'w') as f :
+    file = csv.writer(f)    # csv 파일 생성
+    print(type(file))       # <class '_csv.writer'>
+    file.writerows(w)
+    
 # ex 5)
 with open('./resource/write2.csv', 'w', newline='') as f :
     # 필드명
     fields = ['one', 'two', 'three']
 
-    # Dic Writer
+    # DicWriter() : 딕셔너리를 행 단위로 쓸 떄 사용 (각 행은 {컬럼명:값} 형태로 되어있어야 함)
+    # fildnames 옵션을 사용하여 열 이름(헤더) 명시
     wt = csv.DictWriter(f, fieldnames=fields)
 
-    # Header Writer
+    # writerheader() : fieldnames에 작성한 객체가 header에 입력됨
     wt.writeheader()
 
     for v in w :

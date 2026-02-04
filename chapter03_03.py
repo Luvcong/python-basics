@@ -77,9 +77,9 @@ a.append(10)
 print('a : ', a)    # [5, 2, 3, 1, 4, 10]
 
 # extend() : 리스트 뒤에 값 추가
-# ex = [8, 9]
-# a.extend(ex)
-# print('a : ', a)
+ex = [8, 9]
+a.extend(ex)
+print('a : ', a)
 
 """
 a.append("abc") : 객체 1개의 단위로 값 추가

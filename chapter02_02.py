@@ -60,9 +60,9 @@ print(id(m) == id(n))   # True
 print('--------')
 
 # 3) 다양한 변수 선언
-# Camel Case  :  numberOfCollegeGraduates
-# Pascal Case :  NumberOfCollegeGraduates
-# Snake Case  :  number_of_college_graduates
+# Camel Case  :  numberOfCollegeGraduates (첫 단어는 소문자, 이후 단어의 첫 글자는 대문자)
+# Pascal Case :  NumberOfCollegeGraduates (모든 단어의 첫 글자를 대문자)
+# Snake Case  :  number_of_college_graduates (모두 소문자 + 언더스코어로 단어 구분)
 
 
 # 예약어는 변수명으로 불가능
